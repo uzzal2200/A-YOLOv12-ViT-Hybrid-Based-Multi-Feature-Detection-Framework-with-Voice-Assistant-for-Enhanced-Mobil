@@ -28,9 +28,9 @@ tempfile.tempdir = AUDIO_DIR.as_posix()
 # pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
 
 # ===================== MODEL PATHS =====================
-CURRENCY_WEIGHTS = BASE_DIR / "Bangldesh currencey Detection" / "Save Model" / "best.pt"
-FOOTPATH_WEIGHTS = BASE_DIR / "Footpath Detection" / "Save Model" / "best.pt"
-GENERAL_WEIGHTS = BASE_DIR / "Object detection Custom dataset" / "Save Model" / "best.pt"
+CURRENCY_WEIGHTS = BASE_DIR / "Save Model/Bangldesh currencey Detection/best.pt"
+FOOTPATH_WEIGHTS = BASE_DIR / "Save Model/Footpath Detection/best.pt"
+GENERAL_WEIGHTS = BASE_DIR / "Save Model/Object detection Custom dataset/best.pt"
 
 # Default video (falls back to webcam if not found)
 DEFAULT_VIDEO = Path(r"D:\Research\Research\Real time object detection feedback with vedio\Object-text-detection-for-visually-impaired\video_2026-01-21_22-08-00.mp4")
