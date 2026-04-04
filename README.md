@@ -68,27 +68,26 @@ During live inference (`app.py`):
 - `R`: Toggle OCR module
 - `Q`: Quit
 
-## Datasets
+## 📊 Datasets
 
 ### Dataset 1: Custom Object Detection
-- Source (documented): Kaggle custom object dataset
-- Classes: Vehicle, Chair, Door, Man, Road, Stair, Table, Tree, Wall
-- Application: General environmental object detection
+- **Source**: [Kaggle - Custom Object Detection Dataset](https://www.kaggle.com/datasets/uzzalhasan/custom-object-detection-dataset)
+- **Classes**: 9 objects (Vehicle, Chair, Door, Man, Road, Stair, Table, Tree, Wall)
+- **Format**: YOLO .txt annotation format
+- **Application**: General environmental object detection
 
 ### Dataset 2: Bangladeshi Currency Detection
-- Source (documented): Kaggle BD currency dataset
-- Classes: Bangladeshi denominations
-- Application: Currency recognition
+- **Source**: [Kaggle - BD Currency Dataset](https://www.kaggle.com/datasets/uzzalhasan/bd-currency)
+- **Classes**: 10 denominations (1Tk, 2Tk, 5Tk, 10Tk, 20Tk, 50Tk, 100Tk, 200Tk, 500Tk, 1000Tk)
+- **Format**: YOLO .txt annotation format
+- **Application**: Currency denomination recognition for financial transactions
 
 ### Dataset 3: Footpath Detection
-- Source (documented): Kaggle footpath dataset
-- Classes: Free/Occupied/Unsafe/Partially occupied path conditions
-- Application: Navigation safety
+- **Source**: [Kaggle - Footpath Detection Dataset](https://www.kaggle.com/datasets/uzzalhasan/footpath-detection)
+- **Classes**: 4 conditions (Free for use, Fully Occupied, Not safe for use, Partially Occupied)
+- **Format**: YOLO .txt annotation format
+- **Application**: Sidewalk safety assessment for navigation
 
-### Dataset 4: Face Recognition Database
-- Storage: `Known_unknown_detection/known_faces_folder/`
-- Format: JPG/PNG
-- Application: Known/unknown person identification
 
 ### Dataset Config Keys in Code (`configs/datasets.py`)
 
