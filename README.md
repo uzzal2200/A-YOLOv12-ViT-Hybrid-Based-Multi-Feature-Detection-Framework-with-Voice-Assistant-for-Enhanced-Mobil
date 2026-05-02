@@ -1,19 +1,18 @@
 # A YOLOv12-ViT Hybrid-Based Multi-Feature Detection Framework with Voice Assistant for Enhanced Mobility and Independence of Visually Impaired Persons
 
+<div align="center">
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?style=flat-square&logo=python)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg?style=flat-square&logo=pytorch)](https://pytorch.org/)
 [![YOLOv12](https://img.shields.io/badge/YOLOv12-Latest-green.svg?style=flat-square&logo=opencv)](https://github.com/ultralytics/ultralytics)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.5+-5C3EE8.svg?style=flat-square&logo=opencv)](https://opencv.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-success.svg?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Active-success.svg?style=flat-square)]
 
-<div align="center">
+</div>
 
 **Real-Time Multi-Modal Assistive Technology for Environmental Awareness**
 
 [Description](#-description) • [Dataset Information](#-dataset-information) • [Code Information](#-code-information) • [Installation](#-installation--environment-setup) • [Usage Instructions](#-usage-instructions) • [Requirements](#-requirements) • [Methodology](#-methodology) • [Citations](#-citations) • [License](#-license--contribution-guidelines)
-
-</div>
 
 ---
 
@@ -73,8 +72,7 @@ Three task-specific datasets were used to train and evaluate the system. All dat
 
 - **Source:** ⚠️ **Third-party public dataset** — directly borrowed from the Roboflow Universe repository (not handcrafted by the authors)
 - **Kaggle:** https://www.kaggle.com/datasets/uzzalhasan/footpath-detection
-- **Original Repository:** https://universe.roboflow.com
-- **Repository License:** Please review the license at https://universe.roboflow.com before use or redistribution of this dataset.
+- **Original Repository:** https://app.roboflow.com/md-uzzal-mia/projects
 - **Classes (4):** Free for Use, Fully Occupied, Not Safe for Use, Partially Occupied
 - **Images:** 4,884 (pre-split by original publisher)
 - **Split:** 3,914 train / 735 validation / 235 test
@@ -84,11 +82,11 @@ Three task-specific datasets were used to train and evaluate the system. All dat
 
 ### Dataset Config Keys in Code (`configs/datasets.py`)
 
-| Key | Description |
-|-----|-------------|
-| `currency` | Bangladesh currency detection |
-| `footpath` | Footpath safety detection |
-| `blind_assistant` | Custom object detection |
+| Key                 | Description                                    |
+| ------------------- | ---------------------------------------------- |
+| `currency`          | Bangladesh currency detection                  |
+| `footpath`          | Footpath safety detection                      |
+| `blind_assistant`   | Custom object detection                        |
 | `visually_impaired` | External test-only dataset (Roboflow Universe) |
 
 ---
@@ -151,24 +149,24 @@ Object-text-detection-for-visually-impaired/
 
 ### Model Keys (`configs/models.py`)
 
-| Key | Description |
-|-----|-------------|
-| `yolov5n` | YOLOv5 nano — comparison baseline |
-| `yolov8n` | YOLOv8 nano — comparison baseline |
-| `yolov11n` | YOLOv11 nano — comparison baseline |
-| `yolov12n` | YOLOv12 nano (no ViT) — ablation baseline |
-| `yolov12_vit` | **Proposed: YOLOv12-ViT hybrid** |
+| Key           | Description                               |
+| ------------- | ----------------------------------------- |
+| `yolov5n`     | YOLOv5 nano — comparison baseline         |
+| `yolov8n`     | YOLOv8 nano — comparison baseline         |
+| `yolov11n`    | YOLOv11 nano — comparison baseline        |
+| `yolov12n`    | YOLOv12 nano (no ViT) — ablation baseline |
+| `yolov12_vit` | **Proposed: YOLOv12-ViT hybrid**          |
 
 ### Runtime Controls (during `app.py`)
 
-| Key | Action |
-|-----|--------|
-| `C` | Toggle currency module |
-| `F` | Toggle footpath module |
-| `O` | Toggle object module |
+| Key | Action                         |
+| --- | ------------------------------ |
+| `C` | Toggle currency module         |
+| `F` | Toggle footpath module         |
+| `O` | Toggle object module           |
 | `X` | Toggle face recognition module |
-| `R` | Toggle OCR module |
-| `Q` | Quit |
+| `R` | Toggle OCR module              |
+| `Q` | Quit                           |
 
 ---
 
@@ -190,16 +188,19 @@ pip install -r requirements.txt
 ### 3. Install System Dependencies
 
 **Linux:**
+
 ```bash
 sudo apt-get update && sudo apt-get install -y tesseract-ocr ffmpeg
 ```
 
 **Windows:**
+
 - Tesseract: https://github.com/UB-Mannheim/tesseract/wiki
 - FFmpeg: https://ffmpeg.org/download.html (add `ffmpeg/bin` to PATH)
 - For `dlib`: Visual C++ Build Tools required
 
 **macOS:**
+
 ```bash
 brew install tesseract ffmpeg
 ```
@@ -207,6 +208,7 @@ brew install tesseract ffmpeg
 ### 4. Optional: Set Tesseract Path (Windows)
 
 If Tesseract is not on PATH, set in `app.py`:
+
 ```python
 # pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
 ```
@@ -230,11 +232,13 @@ Train your own with `run.py` or download from the GitHub Releases page.
 ### How to Load Datasets
 
 Download datasets directly from Kaggle:
+
 ```bash
 kaggle datasets download -d uzzalhasan/custom-object-detection-dataset
 kaggle datasets download -d uzzalhasan/bd-currency
 kaggle datasets download -d uzzalhasan/footpath-detection
 ```
+
 Or use the built-in Roboflow downloader via `run.py` (requires a Roboflow API key in `configs/datasets.py`).
 
 ### Run Real-Time Inference (Webcam)
@@ -313,6 +317,7 @@ roboflow >= 1.1.0
 ```
 
 Install all requirements:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -329,11 +334,11 @@ This section describes the complete data processing, model design, training, and
 
 ### 1. Data Collection
 
-| Dataset | Collection Method | Environment |
-|---------|------------------|-------------|
-| Object Detection | Authors photographed campus scenes at PUST using DSLR | Indoor + outdoor |
-| Currency Detection | Mobile phone photographs of banknotes/coins from PUST participants | Indoor (varied backgrounds) |
-| Footpath Detection | Sourced from Roboflow Universe (third-party) | Real-world pedestrian scenes |
+| Dataset            | Collection Method                                                  | Environment                  |
+| ------------------ | ------------------------------------------------------------------ | ---------------------------- |
+| Object Detection   | Authors photographed campus scenes at PUST using DSLR              | Indoor + outdoor             |
+| Currency Detection | Mobile phone photographs of banknotes/coins from PUST participants | Indoor (varied backgrounds)  |
+| Footpath Detection | Sourced from Roboflow Universe (third-party)                       | Real-world pedestrian scenes |
 
 ### 2. Image Annotation
 
@@ -342,6 +347,7 @@ Object detection and currency images were manually annotated in YOLO bounding bo
 ### 3. Preprocessing
 
 Applied to all images via Roboflow prior to training:
+
 - Orientation correction (EXIF metadata)
 - Contrast enhancement (low-light normalization)
 - Color and exposure normalization
@@ -351,13 +357,13 @@ Applied to all images via Roboflow prior to training:
 
 Applied to training sets only:
 
-| Augmentation | Parameters |
-|-------------|------------|
-| Horizontal flip | Mirror image |
-| Random rotation | −10° to +10° |
-| Brightness variation | ±15% |
-| Gaussian motion blur | Kernel-based |
-| Pixel noise | 0.1% random corruption |
+| Augmentation         | Parameters             |
+| -------------------- | ---------------------- |
+| Horizontal flip      | Mirror image           |
+| Random rotation      | −10° to +10°           |
+| Brightness variation | ±15%                   |
+| Gaussian motion blur | Kernel-based           |
+| Pixel noise          | 0.1% random corruption |
 
 ### 5. Model Architecture — YOLOv12-ViT Hybrid
 
@@ -370,16 +376,16 @@ The YOLOv12-ViT model is constructed as follows:
 
 ### 6. Training Configuration
 
-| Parameter | Value |
-|-----------|-------|
-| Epochs | 100 |
-| Batch size | 16 |
-| Input resolution | 640 × 640 |
-| Optimizer | SGD (momentum = 0.937) |
-| Initial learning rate | 0.01 |
-| Parameters | ~2.57 M |
-| Inference GFLOPs | 6.5 |
-| Framework | Ultralytics |
+| Parameter             | Value                  |
+| --------------------- | ---------------------- |
+| Epochs                | 100                    |
+| Batch size            | 16                     |
+| Input resolution      | 640 × 640              |
+| Optimizer             | SGD (momentum = 0.937) |
+| Initial learning rate | 0.01                   |
+| Parameters            | ~2.57 M                |
+| Inference GFLOPs      | 6.5                    |
+| Framework             | Ultralytics            |
 
 ### 7. Face Recognition
 
@@ -406,29 +412,29 @@ All metrics are justified for their role in assistive navigation:
 
 **Detection Tasks:**
 
-| Metric | Formula | Rationale |
-|--------|---------|-----------|
-| Precision | TP/(TP+FP) | Minimizes false alarms; critical for user trust |
-| Recall | TP/(TP+FN) | Minimizes missed detections; critical for safety |
-| mAP@0.5 | Mean AP at IoU ≥ 0.5 | Standard combined localization + classification benchmark |
-| mAP@0.5–0.95 | Mean AP across IoU 0.5–0.95 | Stricter spatial precision assessment |
+| Metric       | Formula                     | Rationale                                                 |
+| ------------ | --------------------------- | --------------------------------------------------------- |
+| Precision    | TP/(TP+FP)                  | Minimizes false alarms; critical for user trust           |
+| Recall       | TP/(TP+FN)                  | Minimizes missed detections; critical for safety          |
+| mAP@0.5      | Mean AP at IoU ≥ 0.5        | Standard combined localization + classification benchmark |
+| mAP@0.5–0.95 | Mean AP across IoU 0.5–0.95 | Stricter spatial precision assessment                     |
 
 **Face Recognition:**
 
-| Metric | Formula | Rationale |
-|--------|---------|-----------|
-| Recognition Accuracy | (TP+TN)/(TP+TN+FP+FN) | Overall identification correctness |
-| Recall | TP/(TP+FN) | Sensitivity to known individuals |
-| FAR | FP/(FP+TN) | Security: prevents unauthorized identity acceptance |
-| FRR | FN/(TP+FN) | Usability: avoids repeated rejection frustration |
+| Metric               | Formula               | Rationale                                           |
+| -------------------- | --------------------- | --------------------------------------------------- |
+| Recognition Accuracy | (TP+TN)/(TP+TN+FP+FN) | Overall identification correctness                  |
+| Recall               | TP/(TP+FN)            | Sensitivity to known individuals                    |
+| FAR                  | FP/(FP+TN)            | Security: prevents unauthorized identity acceptance |
+| FRR                  | FN/(TP+FN)            | Usability: avoids repeated rejection frustration    |
 
 **OCR:**
 
-| Metric | Formula | Rationale |
-|--------|---------|-----------|
-| CER | Edit Distance / Total Characters | Character-level accuracy for complex multilingual scripts |
-| WER | Edit Distance / Total Words | Word-level accuracy |
-| WRA | (1−WER)×100 | Human-interpretable readability score |
+| Metric | Formula                          | Rationale                                                 |
+| ------ | -------------------------------- | --------------------------------------------------------- |
+| CER    | Edit Distance / Total Characters | Character-level accuracy for complex multilingual scripts |
+| WER    | Edit Distance / Total Words      | Word-level accuracy                                       |
+| WRA    | (1−WER)×100                      | Human-interpretable readability score                     |
 
 ---
 
@@ -450,12 +456,12 @@ If you use this code, models, or datasets in your research, please cite:
 
 **Key references used in this work:**
 
-- Tian, Y. et al. (2025). YOLOv12. *arXiv preprint*.
-- Dosovitskiy, A. (2020). An Image is Worth 16×16 Words. *arXiv preprint*.
-- Deng, J. et al. (2022). ArcFace. *IEEE TPAMI*, 44(10):5962–5979.
-- Vaswani, A. et al. (2017). Attention is All You Need. *arXiv preprint*.
-- Redmon, J. et al. (2016). You Only Look Once. *CVPR*, pp. 779–788.
-- Roboflow Universe. Footpath Detection Dataset. https://app.roboflow.com/md-uzzal-mia/footpath-occupancy-detection-cwxe8/1 
+- Tian, Y. et al. (2025). YOLOv12. _arXiv preprint_.
+- Dosovitskiy, A. (2020). An Image is Worth 16×16 Words. _arXiv preprint_.
+- Deng, J. et al. (2022). ArcFace. _IEEE TPAMI_, 44(10):5962–5979.
+- Vaswani, A. et al. (2017). Attention is All You Need. _arXiv preprint_.
+- Redmon, J. et al. (2016). You Only Look Once. _CVPR_, pp. 779–788.
+- Roboflow Universe. Footpath Detection Dataset. https://app.roboflow.com/md-uzzal-mia/footpath-occupancy-detection-cwxe8/1
 
 ---
 
@@ -465,7 +471,7 @@ If you use this code, models, or datasets in your research, please cite:
 
 This project's source code and authors' own datasets are released under the **MIT License**. See [LICENSE](LICENSE) for complete terms.
 
-> ⚠️ **Third-Party Dataset:** The Footpath Detection Dataset is sourced from the Roboflow Universe platform and subject to its original publisher's license. Refer to https://app.roboflow.com/md-uzzal-mia/footpath-occupancy-detection-cwxe8/1  for license terms before use or redistribution.
+> ⚠️ **Third-Party Dataset:** The Footpath Detection Dataset is sourced from the Roboflow Universe platform and subject to its original publisher's license. Refer to https://app.roboflow.com/md-uzzal-mia/footpath-occupancy-detection-cwxe8/1 for license terms before use or redistribution.
 
 ### Contribution Guidelines
 
@@ -500,4 +506,4 @@ All contributions should be compatible with the MIT License.
 
 ---
 
-*Last Updated: May 2, 2026*
+_Last Updated: May 2, 2026_
