@@ -464,8 +464,7 @@ If you use this code, models, or datasets in your research, please cite:
 
 ### License
 
-This project's source code and authors' own datasets are released under the **MIT License**. See [LICENSE](LICENSE) for complete terms.
-
+This project's source code and authors' own datasets are released under the **MIT License**.
 > ⚠️ **Third-Party Dataset:** The Footpath Detection Dataset is sourced from the Roboflow Universe platform and subject to its original publisher's license. Refer to https://app.roboflow.com/md-uzzal-mia/footpath-occupancy-detection-cwxe8/1 for license terms before use or redistribution.
 
 ### Contribution Guidelines
